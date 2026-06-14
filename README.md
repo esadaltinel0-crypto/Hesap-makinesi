@@ -1,10 +1,10 @@
 # Hesap-makinesi
-Arduino uno 4x4 tuş takımı I2C 16x2 ekran
 
+Arduino uno 4x4 tuş takımı I2C 16x2 ekran
 
 kod:
 
-
+```cpp
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <Keypad.h>
@@ -100,8 +100,10 @@ void loop() {
         lcd.print(num1);
       } 
       else {
-        num2 = num2 * 10 + (key - '0');
-        lcd.print(num2);
+        if (key >= '0' && key <= '9') {
+          num2 = num2 * 10 + (key - '0');
+          lcd.print(num2);
+        }
       }
     }
   }
